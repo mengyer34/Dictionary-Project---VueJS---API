@@ -1,0 +1,88 @@
+body {
+    font-family: sans-serif;
+}
+header {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #4fc08d;
+    color: white;
+    text-align: center;
+}
+#app {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    margin: 3rem;
+    border-radius: 10px;
+    padding: 0.1rem;
+}
+#app input {
+    margin: 20px 0 0 20px;
+    width: 40%;
+    padding: 10px;
+}
+.demo {
+    width: calc(100% - 30px);
+    margin: 16px;
+    border: 2px dashed #ccc;
+}
+
+.demo ul {
+    list-style: none;
+    margin: 5px 0;
+}
+.demo ul li .label {
+    background: #4fc08d;
+    width:9%;
+    padding: 3px;
+    color: #fff;
+    text-align: center;
+    margin: 0 0 5px 0;
+}
+
+
+.ul {
+    list-style-type: circle;
+}
+ul .meaning {
+    margin: 1rem 0;
+}
+ul i {
+    cursor: pointer;
+}
+ul .red {
+    color: red;
+}
+
+ul li.example{
+    font-weight: normal;
+}
+
+ul.number {list-style-type: disc; font-weight: bold;}
+.reference {
+    text-align: center;
+    display: block;
+}
+
+ul.synonym {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 16px;
+    padding: 10px;
+    border: 2px dashed #ccc;
+}
+ul.synonym li {
+    margin: 10px;
+}
+.synonym-con {
+    margin: 1rem 0;
+}
+
+ul.d-flex {
+    display: flex;
+    margin: 100px;
+}
+audio {
+    height: 5vh;
+}

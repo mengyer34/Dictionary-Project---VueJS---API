@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>English Dictionary</h1>
+  </header>
+  <section id="app" v-cloak>
+    <input type="text" placeholder="English word" v-model="keyWord" @keyup.enter="getData">
+    <div class="demo">
+      <ul v-if="!isNotFound && isSearch">
+        <h1>{{datas.word}}: {{datas.phonetic}}</h1>
+        <li><div class="label">phonetics: </div></li>
+        <ul> 
+          <li v-for="(phonetic, index) in datas.phonetics">
+            <audio :id="index" controls autoplay="false" :src="phonetic.audio"></audio>
+            <i class="fa fa-volume-up" style="font-size:24px" @click.prevent="playSound(index)" v-if="phonetic.audio.length > 0"></i>
+            <i class="fa fa-volume-off" style="font-size:24px" v-if="phonetic.audio.length == 0"></i>
+             {{phonetic.text}}
+          </li>
+        </ul>
+  
+        <li><div class="label">Meanings: </div></li>
+        <ul v-for="(meaning, i) in datas.meanings" class="meaning">
+          <span class="red">({{meaning.partOfSpeech}})</span>
+          <ul v-for="defin in meaning.definitions" class="number">
+            <li>{{defin.definition}}</li>
+            <ul>
+              <li class="example" v-if="defin.example"><span class="red">Example: </span>{{defin.example}}</li>
+            </ul>
+          </ul>
+
+          <li class="synonym-con" v-if="meaning.synonyms.length>0"><span class="label" >Synonyms: </span>
+            <ul class="synonym">
+              <li v-for="synonym in meaning.synonyms">{{synonym}}, </li>
+            </ul>
+          </li>
+
+          <li class="synonym-con" v-if="meaning.antonyms.length>0"><span class="label" >Antonyms: </span>
+            <ul class="synonym">
+              <li v-for="antonym in meaning.antonyms">{{antonym}}, </li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+    </div>
+    <!-- license & reference -->
+    <section class="reference">
+      <!-- <span v-for="license in ">{{license}}</span> -->
+      <span>Reference from (API) </span>
+      <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank">https://creativecommons.org/licenses/by-sa/3.0</a><br>
+      <span>Dictionary source (Word): </span>
+      <a v-for="source in datas.sourceUrls" :href="source" target="_blank"> {{source}}</a>
+    </section>
+  </section>
+</body>
+<script src="js/main.js"></script>
+</html>
